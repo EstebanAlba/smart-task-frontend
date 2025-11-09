@@ -1,19 +1,43 @@
 import React, { useState } from "react";
-import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
+import {
+  FaUser,
+  FaEnvelope,
+  FaLock,
+  FaEye,
+  FaEyeSlash,
+} from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-const Login = () => {
+
+const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
 
   return (
     <div className="w-full max-w-sm">
+      {/* Título */}
       <h1 className="text-3xl font-bold text-gray-800 mb-2">
-        Bienvenido de nuevo
+        Crear tu cuenta
       </h1>
       <p className="text-gray-500 mb-8 text-sm">
-        Organiza tu agenda con el calendario inteligente de SmartTasker.
+        Únete a SmartTasker y optimiza tu productividad con nuestro calendario
+        inteligente.
       </p>
 
+      {/* Formulario */}
       <form className="space-y-4">
+        {/* Nombre completo */}
+        <div>
+          <div className="relative">
+            <FaUser className="absolute left-3 top-3 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Nombre completo"
+              className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:outline-none"
+            />
+          </div>
+        </div>
+
         {/* Correo electrónico */}
         <div>
           <div className="relative">
@@ -44,14 +68,22 @@ const Login = () => {
           </div>
         </div>
 
-        {/* Enlace recuperar */}
-        <div className="text-right">
-          <button
-            type="button"
-            className="text-sm text-violet-600 hover:underline font-medium"
-          >
-            ¿Olvidaste tu contraseña?
-          </button>
+        {/* Confirmar contraseña */}
+        <div>
+          <div className="relative">
+            <FaLock className="absolute left-3 top-3 text-gray-400" />
+            <input
+              type={showConfirm ? "text" : "password"}
+              placeholder="Confirmar contraseña"
+              className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:outline-none"
+            />
+            <span
+              onClick={() => setShowConfirm(!showConfirm)}
+              className="absolute right-3 top-3 text-gray-400 cursor-pointer"
+            >
+              {showConfirm ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
         </div>
 
         {/* Botón principal */}
@@ -59,7 +91,7 @@ const Login = () => {
           type="submit"
           className="w-full bg-violet-600 text-white py-2 rounded-lg font-semibold hover:bg-violet-700 transition"
         >
-          Entrar
+          Crear cuenta
         </button>
       </form>
 
@@ -83,15 +115,17 @@ const Login = () => {
         <span className="text-gray-700 font-medium">Google</span>
       </button>
 
-      {/* Enlace crear cuenta */}
+      {/* Enlace iniciar sesión */}
       <p className="text-center text-sm text-gray-500 mt-6">
-        ¿Aún no tienes cuenta?{" "}
+        ¿Ya tienes una cuenta?{" "}
         <span className="text-violet-600 font-medium hover:underline cursor-pointer">
-          Crear cuenta
+          <Link to="/auth/login">
+            Iniciar sesión
+          </Link>
         </span>
       </p>
     </div>
   );
 };
 
-export default Login;
+export default Register;

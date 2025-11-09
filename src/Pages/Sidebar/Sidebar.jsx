@@ -28,7 +28,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`h-screen bg-white shadow-md border-r border-gray-200 flex flex-col justify-between transition-all duration-300 ${
+      className={`clsh-screen bg-white shadow-md border-r border-gray-200 flex flex-col justify-between transition-all duration-300 ${
         isOpen ? "w-56" : "w-20"
       }`}
     >
