@@ -28,7 +28,7 @@ function App() {
                 {/* RUTAS PÚBLICAS */}
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/auth/*" element={<Auth />} />
-                <Route path="/sidebar" element={<Sidebar />} /> {/* Ruta de prueba */}
+                <Route path="/sidebar" element={<Sidebar />} /> {/* Ruta de prueba PARA ELIMINARLA*/}  
 
                 {/* =================================== */}
                 {/* 🛡️ BLOQUE DE RUTAS PROTEGIDAS */}
